@@ -22,7 +22,7 @@ plugins {
 */
 version = "1.9.4-1.2.2"
 group= "uk.binarycraft.storagesilo" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
-archivesBaseName = "modid"
+archivesBaseName = "StorageSilo"
 
 minecraft {
     version = "1.9.4-12.17.0.1922-1.9.4"
