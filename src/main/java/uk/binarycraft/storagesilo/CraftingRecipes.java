@@ -12,11 +12,11 @@ public class CraftingRecipes
 
 	ItemStack storageSilo = new ItemStack(ModBlocks.storageSilo);
 	ItemStack craftingSilo = new ItemStack(ModBlocks.craftingSilo);
-	ItemStack enderChest = new ItemStack(Blocks.ender_chest);
-	ItemStack chest = new ItemStack(Blocks.chest);
-	ItemStack eyeOfEnder = new ItemStack(Items.ender_eye);
-	ItemStack diamond = new ItemStack(Items.diamond);
-	ItemStack craftingTable = new ItemStack(Blocks.crafting_table);
+	ItemStack enderChest = new ItemStack(Blocks.ENDER_CHEST);
+	ItemStack chest = new ItemStack(Blocks.CHEST);
+	ItemStack eyeOfEnder = new ItemStack(Items.ENDER_EYE);
+	ItemStack diamond = new ItemStack(Items.DIAMOND);
+	ItemStack craftingTable = new ItemStack(Blocks.CRAFTING_TABLE);
 
 
 	public void init()

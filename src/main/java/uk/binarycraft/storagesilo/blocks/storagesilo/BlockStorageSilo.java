@@ -20,7 +20,7 @@ public class BlockStorageSilo extends BlockContainerBase
 
 	public BlockStorageSilo()
 	{
-		super(Material.iron, "storagesilo", 2.5f, null);
+		super(Material.IRON, "storagesilo", 2.5f, null);
 		//TODO: setStepSound(soundTypeMetal);
 		isBlockContainer = true;
 	}

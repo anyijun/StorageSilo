@@ -205,9 +205,9 @@ public class TileEntityStorageSilo extends TileEntity implements IInventory
 
 
 	@Override
-	public void writeToNBT(NBTTagCompound nbtTag)
+	public NBTTagCompound writeToNBT(NBTTagCompound nbtTag)
 	{
-		super.writeToNBT(nbtTag);
+		nbtTag = super.writeToNBT(nbtTag);
 
 		NBTTagList nbttaglist = new NBTTagList();
 		for (int i = 0; i < this.inventory.length; ++i)
@@ -221,7 +221,7 @@ public class TileEntityStorageSilo extends TileEntity implements IInventory
 			}
 		}
 		nbtTag.setTag("Items", nbttaglist);
-
+		return nbtTag;
 	}
 
 
