@@ -6,6 +6,7 @@
     "north": "storagesilo:blocks/craftingsilo_sides",
     "south": "storagesilo:blocks/craftingsilo_sides",
     "east": "storagesilo:blocks/craftingsilo_sides",
-    "west": "storagesilo:blocks/craftingsilo_sides"
+    "west": "storagesilo:blocks/craftingsilo_sides",
+    "particle": "blocks/stone"
   }
 }

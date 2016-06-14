@@ -6,6 +6,7 @@
     "north": "storagesilo:blocks/storagesilo_sides",
     "south": "storagesilo:blocks/storagesilo_sides",
     "east": "storagesilo:blocks/storagesilo_sides",
-    "west": "storagesilo:blocks/storagesilo_sides"
+    "west": "storagesilo:blocks/storagesilo_sides",
+    "particle": "blocks/stone"
   }
 }
