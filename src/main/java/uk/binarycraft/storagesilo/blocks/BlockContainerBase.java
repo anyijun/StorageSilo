@@ -27,7 +27,6 @@ public class BlockContainerBase extends BlockContainer
 		super(material);
 		setUnlocalizedName(name);
 		this.setCreativeTab(StorageSilo.storageSiloCreativeTab);
-		//setBlockTextureName(getTexture(name));
 		setHardness(hardness);
 		if (itemBlock != null)
 		{
