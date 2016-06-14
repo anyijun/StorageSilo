@@ -3,3 +3,4 @@ tile.craftingsilo.name=Crafting Silo
 itemGroup.StorageSilo=Storage Silo
 gui.storagesilo=Storage Silo
 gui.craftingsilo=Crafting Silo
+message.version.update.available=StorageSilo update available http://www.binarycraft.uk/
