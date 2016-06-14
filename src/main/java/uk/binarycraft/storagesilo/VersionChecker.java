@@ -10,7 +10,7 @@ import java.net.URL;
 public class VersionChecker implements Runnable
 {
     private static String latestVersion;
-    private static boolean isLatestVersion;
+    private static boolean isLatestVersion = true;
 
     @Override
     public void run()
@@ -39,6 +39,11 @@ public class VersionChecker implements Runnable
         {
             IOUtils.closeQuietly(inputStream);
         }
+
+        if (latestVersion.equals(StorageSilo.MODVERSION))
+            isLatestVersion = true;
+        else
+            isLatestVersion = false;
     }
 
     public static boolean isLatestVersion()
