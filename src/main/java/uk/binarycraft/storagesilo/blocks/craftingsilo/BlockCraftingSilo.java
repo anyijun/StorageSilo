@@ -11,10 +11,11 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.world.World;
 import uk.binarycraft.storagesilo.StorageSilo;
-import uk.binarycraft.storagesilo.blocks.BlockContainerBase;
+import uk.binarycraft.storagesilo.blocks.SiloBlockBase;
+import uk.binarycraft.storagesilo.blocks.SiloTileEntityBase;
 import uk.binarycraft.storagesilo.gui.GuiHandler;
 
-public class BlockCraftingSilo extends BlockContainerBase
+public class BlockCraftingSilo extends SiloBlockBase
 {
 
 	public BlockCraftingSilo()
@@ -37,18 +38,7 @@ public class BlockCraftingSilo extends BlockContainerBase
 	@Override
 	public TileEntity createNewTileEntity(World world, int p1)
 	{
-		return new TileEntityCraftingSilo();
-	}
-
-
-	@Override
-	public void breakBlock(World world, BlockPos blockPos, IBlockState blockState)
-	{
-		TileEntityCraftingSilo tileentity = (TileEntityCraftingSilo) world.getTileEntity(blockPos);
-
-		dropInventory(world, blockPos.getX(), blockPos.getY(), blockPos.getZ(), blockState.getBlock(), tileentity);
-
-		super.breakBlock(world, blockPos, blockState);
+		return new SiloTileEntityBase();
 	}
 
 

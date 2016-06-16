@@ -10,6 +10,7 @@ import net.minecraft.util.ResourceLocation;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.input.Mouse;
 import org.lwjgl.opengl.GL11;
+import uk.binarycraft.storagesilo.blocks.SiloTileEntityBase;
 import uk.binarycraft.storagesilo.inventory.SlotSearchable;
 
 import java.io.IOException;
@@ -23,8 +24,7 @@ public class GuiStorageSilo extends GuiContainer
 
 	private static final ResourceLocation guiTexture = new ResourceLocation(
 			"storagesilo:textures/gui/storagesilo.png");
-	// private boolean unknownBool;
-	public TileEntityStorageSilo storehouse;
+	public SiloTileEntityBase storehouse;
 	private float currentScroll;
 	private boolean isScrolling;
 	private boolean wasClicking;
@@ -35,7 +35,7 @@ public class GuiStorageSilo extends GuiContainer
 	private boolean hasBeenDrawn = false;
 
 
-	public GuiStorageSilo(EntityPlayer player, TileEntityStorageSilo storehouse)
+	public GuiStorageSilo(EntityPlayer player, SiloTileEntityBase storehouse)
 	{
 		super(new ContainerStorageSilo(player, storehouse));
 
@@ -142,9 +142,7 @@ public class GuiStorageSilo extends GuiContainer
 		if (this.needsScrollBars())
 		{
 			int x1 = i1;
-			// int x2 = x1 + 12;
 			int y1 = k + (int) ((float) (l - k - 17) * this.currentScroll);
-			// int y2 = y1 + 15;
 
 			this.drawTexturedModalRect(x1, y1, 0, 0, 12, 15);
 		} else

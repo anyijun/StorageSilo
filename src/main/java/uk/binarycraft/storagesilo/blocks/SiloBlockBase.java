@@ -6,23 +6,22 @@ import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import uk.binarycraft.storagesilo.StorageSilo;
 
-public class BlockContainerBase extends BlockContainer
+public class SiloBlockBase extends BlockContainer
 {
 
-	protected BlockContainerBase(Material material, String name, float hardness, Class<? extends ItemBlock> itemBlock)
+	protected SiloBlockBase(Material material, String name, float hardness, Class<? extends ItemBlock> itemBlock)
 	{
 		super(material);
 		setUnlocalizedName(name);
@@ -39,11 +38,10 @@ public class BlockContainerBase extends BlockContainer
 	}
 
 
-	protected BlockContainerBase(Material material, String name, float hardness, String harvestTool, int harvestLevel, Class<? extends ItemBlock> itemBlock)
+	protected SiloBlockBase(Material material, String name, float hardness, String harvestTool, int harvestLevel, Class<? extends ItemBlock> itemBlock)
 	{
 		this(material, name, hardness, itemBlock);
 		setHarvestLevel(harvestTool, harvestLevel);
-
 	}
 
 
@@ -54,8 +52,43 @@ public class BlockContainerBase extends BlockContainer
 
 
 	@Override
-	public void onBlockPlacedBy(World world, BlockPos blockPos, IBlockState blockState, EntityLivingBase entity, ItemStack itemStack)
+	public void dropBlockAsItemWithChance(World world, BlockPos pos, IBlockState blockState, float chance, int fortune)
 	{
+	}
+
+
+	@Override
+	public void breakBlock(World world, BlockPos blockPos, IBlockState blockState)
+	{
+		NBTTagCompound tag = new NBTTagCompound();
+
+		TileEntity blockTileEntity = world.getTileEntity(blockPos);
+		blockTileEntity.writeToNBT(tag);
+
+		ItemStack blockItem = new ItemStack(Item.getItemFromBlock(this), 1, this.damageDropped(blockState));
+
+		EntityItem entityitem = new EntityItem(world, blockPos.getX(), blockPos.getY(), blockPos.getZ(), blockItem);
+		entityitem.getEntityItem().setTagCompound(tag);
+		world.spawnEntityInWorld(entityitem);
+	}
+
+
+	@Override
+	public void onBlockPlacedBy(World world, BlockPos pos, IBlockState blockState, EntityLivingBase entityPlayer, ItemStack itemStack)
+	{
+		TileEntity blockTileEntity = world.getTileEntity(pos);
+		if (blockTileEntity != null && blockTileEntity instanceof SiloTileEntityBase)
+		{
+			SiloTileEntityBase siloTileEntity = (SiloTileEntityBase)blockTileEntity;
+
+			if(itemStack.hasTagCompound())
+			{
+				NBTTagCompound tag = itemStack.getTagCompound();
+				siloTileEntity.readFromNBT(tag);
+				siloTileEntity.markDirty();
+			}
+		}
+		super.onBlockPlacedBy(world, pos, blockState, entityPlayer, itemStack);
 	}
 
 
