@@ -44,7 +44,6 @@ public class StorageSilo
 		siloCapacity = config.getInt("StorageSiloCapacity", Configuration.CATEGORY_GENERAL, 999, 54, 999, "The number of available slots in each StorageSilo");
 		storageSiloEnabled = config.getBoolean("StorageSiloEnabled", Configuration.CATEGORY_GENERAL, true, "Enable or disable the StorageSilo block");
 		craftingSiloEnabled = config.getBoolean("CraftingSiloEnabled", Configuration.CATEGORY_GENERAL, true, "Enable or disable the CraftingSilo block");
-		versionCheckEnabled = config.getBoolean("VersionCheckEnabled", Configuration.CATEGORY_GENERAL, true, "Mods shouldn't use chat to inform players of new versions, so you can disable that here");
 		config.save();
 
 		if (!storageSiloEnabled && !craftingSiloEnabled)
