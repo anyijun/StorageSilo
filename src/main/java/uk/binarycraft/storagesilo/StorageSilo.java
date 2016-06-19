@@ -12,7 +12,7 @@ import net.minecraftforge.fml.common.event.*;
 import uk.binarycraft.storagesilo.blocks.ModBlocks;
 import uk.binarycraft.storagesilo.proxy.CommonProxy;
 
-@Mod(modid = Reference.MODID, version = Reference.VERSION, name = Reference.MODNAME)
+@Mod(modid = Reference.MODID, version = Reference.VERSION, name = Reference.MODNAME, updateJSON = "http://www.binarycraft.uk/storagesilo/version.json")
 public class StorageSilo
 {
 
@@ -20,12 +20,10 @@ public class StorageSilo
 	public static boolean storageSiloEnabled;
 	public static boolean craftingSiloEnabled;
 	public static boolean versionCheckEnabled;
-	public static String MODVERSION = "1.2.3";
 	@Instance(Reference.MODID)
 	public static StorageSilo instance;
 	@SidedProxy(clientSide = "uk.binarycraft.storagesilo.proxy.ClientProxy", serverSide = "uk.binarycraft.storagesilo.proxy.CommonProxy")
 	public static CommonProxy proxy;
-	public static boolean haveNotifiedVersionOutOfDate = false;
 	public static CreativeTabs storageSiloCreativeTab = new CreativeTabs("StorageSilo")
 	{
 		@Override
@@ -37,7 +35,6 @@ public class StorageSilo
 				return new ItemStack(ModBlocks.craftingSilo).getItem();
 		}
 	};
-
 
 
 	private void getConfiguration(FMLPreInitializationEvent event) throws Exception

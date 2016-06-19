@@ -1,4 +1,4 @@
-package uk.binarycraft.storagesilo.blocks.craftingsilo;
+package uk.binarycraft.storagesilo.blocks;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
@@ -9,14 +9,13 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.text.ITextComponent;
 import uk.binarycraft.storagesilo.StorageSilo;
 
-public class TileEntityCraftingSilo extends TileEntity implements IInventory
+public class SiloTileEntity extends TileEntity implements IInventory
 {
-
 	public boolean isDirty;
 	protected ItemStack[] inventory;
 
 
-	public TileEntityCraftingSilo()
+	public SiloTileEntity()
 	{
 		inventory = new ItemStack[getSizeInventory()];
 	}
@@ -25,7 +24,7 @@ public class TileEntityCraftingSilo extends TileEntity implements IInventory
 	@Override
 	public int getSizeInventory()
 	{
-		return StorageSilo.siloCapacity;// + 10;
+		return StorageSilo.siloCapacity;
 	}
 
 
@@ -85,20 +84,6 @@ public class TileEntityCraftingSilo extends TileEntity implements IInventory
 	}
 
 
-	//	@Override
-	//	public String getInventoryName()
-	//	{
-	//		return "Storehouse";
-	//	}
-
-
-	//	@Override
-	//	public boolean hasCustomInventoryName()
-	//	{
-	//		return false;
-	//	}
-
-
 	@Override
 	public int getInventoryStackLimit()
 	{
@@ -116,27 +101,13 @@ public class TileEntityCraftingSilo extends TileEntity implements IInventory
 	@Override
 	public void openInventory(EntityPlayer player)
 	{
-
 	}
 
 
 	@Override
 	public void closeInventory(EntityPlayer player)
 	{
-
 	}
-
-
-	//	@Override
-	//	public void openInventory()
-	//	{
-	//	}
-
-
-	//	@Override
-	//	public void closeInventory()
-	//	{
-	//	}
 
 
 	@Override
@@ -156,7 +127,6 @@ public class TileEntityCraftingSilo extends TileEntity implements IInventory
 	@Override
 	public void setField(int id, int value)
 	{
-
 	}
 
 
@@ -170,7 +140,6 @@ public class TileEntityCraftingSilo extends TileEntity implements IInventory
 	@Override
 	public void clear()
 	{
-
 	}
 
 
@@ -198,6 +167,7 @@ public class TileEntityCraftingSilo extends TileEntity implements IInventory
 				this.inventory[j] = ItemStack.loadItemStackFromNBT(nbttagcompound1);
 			}
 		}
+		markDirty();
 	}
 
 
@@ -228,7 +198,6 @@ public class TileEntityCraftingSilo extends TileEntity implements IInventory
 		isDirty = true;
 		super.markDirty();
 	}
-
 
 
 	@Override

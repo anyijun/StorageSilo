@@ -5,11 +5,11 @@ import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.input.Mouse;
 import org.lwjgl.opengl.GL11;
+import uk.binarycraft.storagesilo.blocks.SiloTileEntity;
 import uk.binarycraft.storagesilo.inventory.SlotSearchable;
 
 import java.io.IOException;
@@ -23,8 +23,7 @@ public class GuiStorageSilo extends GuiContainer
 
 	private static final ResourceLocation guiTexture = new ResourceLocation(
 			"storagesilo:textures/gui/storagesilo.png");
-	// private boolean unknownBool;
-	public TileEntityStorageSilo storehouse;
+	public SiloTileEntity siloTileEntity;
 	private float currentScroll;
 	private boolean isScrolling;
 	private boolean wasClicking;
@@ -35,15 +34,13 @@ public class GuiStorageSilo extends GuiContainer
 	private boolean hasBeenDrawn = false;
 
 
-	public GuiStorageSilo(EntityPlayer player, TileEntityStorageSilo storehouse)
+	public GuiStorageSilo(EntityPlayer player, SiloTileEntity siloTileEntity)
 	{
-		super(new ContainerStorageSilo(player, storehouse));
-
+		super(new ContainerStorageSilo(player, siloTileEntity));
 		this.ySize = 222;
 		this.xSize = 195;
-		this.storehouse = storehouse;
+		this.siloTileEntity = siloTileEntity;
 		this.allowUserInput = true;
-
 	}
 
 
@@ -60,7 +57,6 @@ public class GuiStorageSilo extends GuiContainer
 		this.searchField.setTextColor(16777215);
 		this.searchField.setCanLoseFocus(false);
 		this.searchField.setFocused(true);
-
 	}
 
 
@@ -123,7 +119,7 @@ public class GuiStorageSilo extends GuiContainer
 
 	private boolean needsScrollBars()
 	{
-		return storehouse.getSizeInventory() > 54;
+		return siloTileEntity.getSizeInventory() > 54;
 	}
 
 
@@ -142,9 +138,7 @@ public class GuiStorageSilo extends GuiContainer
 		if (this.needsScrollBars())
 		{
 			int x1 = i1;
-			// int x2 = x1 + 12;
 			int y1 = k + (int) ((float) (l - k - 17) * this.currentScroll);
-			// int y2 = y1 + 15;
 
 			this.drawTexturedModalRect(x1, y1, 0, 0, 12, 15);
 		} else
@@ -154,10 +148,10 @@ public class GuiStorageSilo extends GuiContainer
 
 		this.searchField.drawTextBox();
 
-		if (storehouse.isDirty)
+		if (siloTileEntity.isDirty)
 		{
 			updateSearch(false);
-			storehouse.isDirty = false;
+			siloTileEntity.isDirty = false;
 		}
 
 	}
@@ -166,15 +160,6 @@ public class GuiStorageSilo extends GuiContainer
 	public boolean doesGuiPauseGame()
 	{
 		return false;
-	}
-
-
-	public void setInventorySlotContents(int i, ItemStack itemStack)
-	{
-
-		storehouse.setInventorySlotContents(i, itemStack);
-
-		storehouse.markDirty();
 	}
 
 
@@ -210,7 +195,7 @@ public class GuiStorageSilo extends GuiContainer
 		if (i != 0 && this.needsScrollBars())
 		{
 
-			int j = storehouse.getSizeInventory() / 9 - 6;
+			int j = siloTileEntity.getSizeInventory() / 9 - 6;
 
 			if (i > 0)
 			{
@@ -243,7 +228,7 @@ public class GuiStorageSilo extends GuiContainer
 
 		int numItems = items.size();
 
-		for (int i = 0; i < storehouse.getSizeInventory(); i++)
+		for (int i = 0; i < siloTileEntity.getSizeInventory(); i++)
 		{
 			SlotSearchable slot = (SlotSearchable) container.getSlot(i);
 			slot.xDisplayPosition = -10000;
@@ -274,7 +259,7 @@ public class GuiStorageSilo extends GuiContainer
 	private void updateSearch(boolean resetScroll)
 	{
 		items.clear();
-		for (int i = 0; i < storehouse.getSizeInventory(); i++)
+		for (int i = 0; i < siloTileEntity.getSizeInventory(); i++)
 		{
 			SlotSearchable slot = (SlotSearchable) container.getSlot(i);
 			slot.setMatchesSearch(searchField.getText());

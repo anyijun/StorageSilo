@@ -6,6 +6,7 @@ import net.minecraft.inventory.*;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.world.World;
+import uk.binarycraft.storagesilo.blocks.SiloTileEntity;
 import uk.binarycraft.storagesilo.inventory.ContainerBase;
 import uk.binarycraft.storagesilo.inventory.SlotSearchable;
 
@@ -14,12 +15,12 @@ public class ContainerCraftingSilo extends ContainerBase
 
 	public InventoryCrafting craftMatrix = new InventoryCrafting(this, 3, 3);
 	private int numRows;
-	private TileEntityCraftingSilo tileEntityCraftingSilo;
+	private SiloTileEntity tileEntityCraftingSilo;
 	private IInventory craftResult;
 	private World world;
 
 
-	public ContainerCraftingSilo(EntityPlayer player, TileEntityCraftingSilo tileEntityCraftingSilo)
+	public ContainerCraftingSilo(EntityPlayer player, SiloTileEntity tileEntityCraftingSilo)
 	{
 		super(tileEntityCraftingSilo);
 		this.tileEntityCraftingSilo = tileEntityCraftingSilo;
@@ -31,11 +32,6 @@ public class ContainerCraftingSilo extends ContainerBase
 			for (int slot = 0; slot < 9; ++slot)
 				this.addSlotToContainer(new SlotSearchable(this.tileEntityCraftingSilo, slot + row * 9, 8 + slot * 18, 22 + row * 18));
 
-
-		// Add crafting Matrix - commented out, matrix no longer persistent
-		//for (int i=0; i<9; i++){
-		//	craftMatrix.setInventorySlotContents(i, tileEntityCraftingSilo.getStackInSlot(tileEntityCraftingSilo.getSizeInventory()-10+i));
-		//}
 
 		// Add crafting output slot
 		this.addSlotToContainer(new SlotCrafting(player, craftMatrix, craftResult, 9, 130, 97));
