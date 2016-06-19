@@ -3,7 +3,7 @@ package uk.binarycraft.storagesilo.blocks.storagesilo;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Slot;
-import uk.binarycraft.storagesilo.blocks.SiloTileEntityBase;
+import uk.binarycraft.storagesilo.blocks.SiloTileEntity;
 import uk.binarycraft.storagesilo.inventory.ContainerBase;
 import uk.binarycraft.storagesilo.inventory.SlotSearchable;
 
@@ -11,10 +11,10 @@ public class ContainerStorageSilo extends ContainerBase
 {
 
 	private int numRows;
-	private SiloTileEntityBase deepStorageChest;
+	private SiloTileEntity deepStorageChest;
 
 
-	public ContainerStorageSilo(EntityPlayer player, SiloTileEntityBase deepStorageChest)
+	public ContainerStorageSilo(EntityPlayer player, SiloTileEntity deepStorageChest)
 	{
 		super(deepStorageChest);
 		this.deepStorageChest = deepStorageChest;

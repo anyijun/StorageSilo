@@ -10,7 +10,7 @@ import net.minecraft.util.ResourceLocation;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.input.Mouse;
 import org.lwjgl.opengl.GL11;
-import uk.binarycraft.storagesilo.blocks.SiloTileEntityBase;
+import uk.binarycraft.storagesilo.blocks.SiloTileEntity;
 import uk.binarycraft.storagesilo.inventory.SlotSearchable;
 
 import java.io.IOException;
@@ -23,7 +23,7 @@ public class GuiCraftingSilo extends GuiContainer
 {
 
 	private static final ResourceLocation guiTexture = new ResourceLocation("storagesilo:textures/gui/craftingsilo.png");
-	public SiloTileEntityBase tileEntityCraftingSilo;
+	public SiloTileEntity tileEntityCraftingSilo;
 	private float currentScroll;
 	private boolean isScrolling;
 	private boolean wasClicking;
@@ -34,7 +34,7 @@ public class GuiCraftingSilo extends GuiContainer
 	private boolean hasBeenDrawn = false;
 
 
-	public GuiCraftingSilo(EntityPlayer player, SiloTileEntityBase tileEntity)
+	public GuiCraftingSilo(EntityPlayer player, SiloTileEntity tileEntity)
 	{
 		super(new ContainerCraftingSilo(player, tileEntity));
 

@@ -6,7 +6,7 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import uk.binarycraft.storagesilo.StorageSilo;
-import uk.binarycraft.storagesilo.blocks.SiloTileEntityBase;
+import uk.binarycraft.storagesilo.blocks.SiloTileEntity;
 import uk.binarycraft.storagesilo.gui.GuiHandler;
 
 import static uk.binarycraft.storagesilo.StorageSilo.craftingSiloEnabled;
@@ -34,9 +34,9 @@ public class CommonProxy
 	private void registerTileEntities()
 	{
 		if (storageSiloEnabled)
-			GameRegistry.registerTileEntity(SiloTileEntityBase.class, "tileEntityStorageSilo");
+			GameRegistry.registerTileEntity(SiloTileEntity.class, "tileEntityStorageSilo");
 
 		if (craftingSiloEnabled)
-			GameRegistry.registerTileEntity(SiloTileEntityBase.class, "tileEntityCraftingSilo");
+			GameRegistry.registerTileEntity(SiloTileEntity.class, "tileEntityCraftingSilo");
 	}
 }

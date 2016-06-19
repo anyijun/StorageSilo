@@ -6,13 +6,13 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumBlockRenderType;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.EnumFacing;
 import net.minecraft.world.World;
 import uk.binarycraft.storagesilo.StorageSilo;
 import uk.binarycraft.storagesilo.blocks.SiloBlockBase;
-import uk.binarycraft.storagesilo.blocks.SiloTileEntityBase;
+import uk.binarycraft.storagesilo.blocks.SiloTileEntity;
 import uk.binarycraft.storagesilo.gui.GuiHandler.GUI;
 
 
@@ -38,7 +38,7 @@ public class BlockStorageSilo extends SiloBlockBase
 	@Override
 	public TileEntity createNewTileEntity(World world, int p1)
 	{
-		return new SiloTileEntityBase();
+		return new SiloTileEntity();
 	}
 
 

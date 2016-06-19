@@ -6,7 +6,7 @@ import net.minecraft.inventory.*;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.world.World;
-import uk.binarycraft.storagesilo.blocks.SiloTileEntityBase;
+import uk.binarycraft.storagesilo.blocks.SiloTileEntity;
 import uk.binarycraft.storagesilo.inventory.ContainerBase;
 import uk.binarycraft.storagesilo.inventory.SlotSearchable;
 
@@ -15,12 +15,12 @@ public class ContainerCraftingSilo extends ContainerBase
 
 	public InventoryCrafting craftMatrix = new InventoryCrafting(this, 3, 3);
 	private int numRows;
-	private SiloTileEntityBase tileEntityCraftingSilo;
+	private SiloTileEntity tileEntityCraftingSilo;
 	private IInventory craftResult;
 	private World world;
 
 
-	public ContainerCraftingSilo(EntityPlayer player, SiloTileEntityBase tileEntityCraftingSilo)
+	public ContainerCraftingSilo(EntityPlayer player, SiloTileEntity tileEntityCraftingSilo)
 	{
 		super(tileEntityCraftingSilo);
 		this.tileEntityCraftingSilo = tileEntityCraftingSilo;

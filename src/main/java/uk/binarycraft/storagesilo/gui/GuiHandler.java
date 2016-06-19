@@ -5,7 +5,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.network.IGuiHandler;
-import uk.binarycraft.storagesilo.blocks.SiloTileEntityBase;
+import uk.binarycraft.storagesilo.blocks.SiloTileEntity;
 import uk.binarycraft.storagesilo.blocks.craftingsilo.BlockCraftingSilo;
 import uk.binarycraft.storagesilo.blocks.craftingsilo.ContainerCraftingSilo;
 import uk.binarycraft.storagesilo.blocks.craftingsilo.GuiCraftingSilo;
@@ -21,7 +21,7 @@ public class GuiHandler implements IGuiHandler
 	{
 		BlockPos blockPos = new BlockPos(x, y, z);
 		Block block = world.getBlockState(blockPos).getBlock();
-		SiloTileEntityBase tile = (SiloTileEntityBase) world.getTileEntity(blockPos);
+		SiloTileEntity tile = (SiloTileEntity) world.getTileEntity(blockPos);
 		if (block instanceof BlockStorageSilo)
 		{
 			return new ContainerStorageSilo(player, tile);
@@ -41,7 +41,7 @@ public class GuiHandler implements IGuiHandler
 	{
 		BlockPos blockPos = new BlockPos(x, y, z);
 		Block block = world.getBlockState(blockPos).getBlock();
-		SiloTileEntityBase tile = (SiloTileEntityBase) world.getTileEntity(blockPos);
+		SiloTileEntity tile = (SiloTileEntity) world.getTileEntity(blockPos);
 		if (block instanceof BlockStorageSilo)
 		{
 			return new GuiStorageSilo(player, tile);
