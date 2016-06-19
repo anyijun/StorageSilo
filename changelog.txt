@@ -3,4 +3,4 @@ Change log
 1.2.3
 =====
 * StorageSilos and Crafting silos now retain their inventory when the block is broken
-* Implemented the forge update notification method
+* Implemented the API for forge providing update notification
