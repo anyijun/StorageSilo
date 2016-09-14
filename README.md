@@ -1,6 +1,2 @@
 # StorageSilo
-A Forge Minecraft game modification to allow bulk storage of items and blocks
-
-Official binary (.jar) downloads for this mod are available exclusively on my website, http://www.binarycraft.uk/
-
-I welcome any pull requests that enhance the mod without changing core functionality.
+StorageSilo has been replaced with my new mod BinaryCraft, which includes the features from this mod. The source is on github (and the new mod is on Curse).
